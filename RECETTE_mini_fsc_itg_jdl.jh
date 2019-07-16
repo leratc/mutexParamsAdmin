@@ -1,0 +1,450 @@
+entity Categorieobjective {
+	id Integer required,
+	libelle String required maxlength(50),
+	ordre Integer required
+}
+
+entity Chapitre {
+	id Integer required,
+	title String required maxlength(255)
+}
+
+entity ChapitreDocumentmeta {
+	numeroordre Integer required
+}
+
+entity Collegeunpmf {
+	id Integer required,
+	effectif Integer required,
+	agemoyen Integer required,
+	masssala Integer required,
+	masssalb Integer required,
+	masssalc Integer required,
+	groupetypecollege String required maxlength(50),
+	risquesencoursId Integer
+}
+
+entity Conventioncollective {
+	id Integer required,
+	libelle String maxlength(250),
+	codeidcc String maxlength(5),
+	numerojo String maxlength(10)
+}
+
+entity Documentmeta {
+	id Integer required,
+	libelle String required maxlength(255),
+	filename String required maxlength(255),
+	mimetype String required maxlength(50),
+	numeropatch Integer
+}
+
+entity Entreprise {
+	id Integer required,
+	raisonsociale String required maxlength(38),
+	numerosiret String maxlength(14),
+	dsn Boolean,
+	adresseligne1 String maxlength(38),
+	adresseligne2 String maxlength(38),
+	adresseligne3 String maxlength(38),
+	adresseligne4 String maxlength(38),
+	codepostal String required maxlength(5),
+	ville String required maxlength(38),
+	identitecorrespondant String maxlength(250),
+	civilitecorrespondant String maxlength(3),
+	fonctioncorrespondant String maxlength(250),
+	telephonestandard String maxlength(10),
+	telephonemobile String maxlength(10),
+	telephoneautre String maxlength(10),
+	fax String maxlength(10),
+	email1 String maxlength(250),
+	email2 String maxlength(250)
+}
+
+entity Fragmentedition {
+	id Integer required,
+	libelle String required maxlength(255),
+	path String required maxlength(255),
+	numeroOrdre Integer required,
+	obligatoire Boolean required,
+	choisiParDefaut Boolean required,
+	type String required maxlength(255),
+	numeroPatch Integer,
+	dynamique Boolean
+}
+
+entity Garantie {
+	id Integer required,
+	libelle TextBlob required,
+	libelleselection TextBlob,
+	precisionlibelleselection TextBlob,
+	tooltip String maxlength(255),
+	reference String required maxlength(50),
+	choisieParDefaut Boolean required,
+	modifiable Boolean required,
+	visible Boolean required,
+	numeroOrdre Integer required,
+	filtreid String maxlength(25),
+	typeSpecificite String maxlength(25),
+	libelleRisque String maxlength(250),
+	groupementTarifaire String required maxlength(5)
+}
+
+entity LibelleTypeCollege {
+	id Integer required,
+	libelle String required maxlength(50),
+	libelleeditique String required maxlength(50)
+}
+
+entity Module {
+	id Integer required,
+	typeproduit String required maxlength(50),
+	moduledefinitionId Integer required
+}
+
+entity Moduledefinition {
+	id Integer required,
+	libelle String required maxlength(255),
+	description String maxlength(255),
+	numeroordre Integer required,
+	effectifmax Integer
+}
+
+entity Mutuelle {
+	id Integer required,
+	nom String maxlength(100),
+	ligneadresse1 String maxlength(50),
+	ligneadresse2 String maxlength(50),
+	ligneadresse3 String maxlength(50),
+	ligneadresse4 String maxlength(50),
+	codepostal String maxlength(5),
+	ville String maxlength(50),
+	siren String maxlength(9),
+	branchesactivite String maxlength(50),
+	qualite String maxlength(280),
+	clauseremuneration String maxlength(280),
+	clausemediation String maxlength(280),
+	clauseacpr String maxlength(280),
+	clausereclamation String maxlength(280)
+}
+
+entity Naf {
+	id Integer required,
+	codenaf2 String maxlength(5),
+	libellenaf String maxlength(250),
+	codenaf1 String maxlength(4)
+}
+
+entity Packgaranties {
+	id Integer required,
+	agemax Integer,
+	agemin Integer,
+	numeroordre Integer required
+}
+
+entity Parametre {
+	nom String required maxlength(255),
+	value String required maxlength(250)
+}
+
+entity ParamsBooleen {
+	id Integer required,
+	champGarantie String required maxlength(50),
+	flag Boolean required
+}
+
+entity ParamsDecimal {
+	id Integer required,
+	champGarantie String required maxlength(50),
+	valeur BigDecimal required
+}
+
+entity ParamsEntier {
+	id Integer required,
+	champGarantie String required maxlength(50),
+	valeur Integer required
+}
+
+entity ParamsListeDecimal {
+	id Integer required,
+	champGarantie String required maxlength(50),
+	valeurMin BigDecimal required,
+	valeurMax BigDecimal required,
+	pas BigDecimal required
+}
+
+entity ParamsListeEntier {
+	id Integer required,
+	champGarantie String required maxlength(50),
+	valeurMin Integer required,
+	valeurMax Integer required,
+	pas Integer required
+}
+
+entity ParamsTexte {
+	id Integer required,
+	champGarantie String required maxlength(50),
+	texte String required maxlength(250)
+}
+
+entity Patchdocument {
+	numeropatch Integer required,
+	chemin String required maxlength(255)
+}
+
+entity Prestation {
+	id Integer required,
+	libelle String maxlength(255),
+	formuleLibelle String maxlength(255),
+	formule String maxlength(255),
+	formuleApplication String maxlength(255),
+	epingleGarantie Boolean required,
+	numeroOrdre Integer required
+}
+
+entity Produit {
+	id Integer required,
+	libelle String required maxlength(250),
+	reference String required maxlength(50),
+	numeroordre Integer required,
+	typeproduit String required maxlength(50),
+	familleproduit String required maxlength(50),
+	produitadditionnel Boolean required,
+	obligatoirepourentreprise Boolean required,
+	effectifmax Integer,
+	chartegraphique String required maxlength(15),
+	alertetarificationexterne String maxlength(255),
+	questionnairerecexige Boolean required,
+	libellemodule String required maxlength(50),
+	nomchampbadh String maxlength(20),
+	typequestionnairerec String maxlength(50)
+}
+
+entity ProduitExclusion {
+	produitId Integer required,
+	produitexcludedId Integer required
+}
+
+entity ProduitInclusion {
+	produitId Integer required,
+	produitincludedId Integer required
+}
+
+entity Produittypecollegelink {
+	effectifmax Integer
+}
+
+entity Produitcategorieobjectivelink {
+}
+
+entity ProduitFragmentedition {
+}
+entity NafProduit {
+}
+entity GarantieTypecollege {
+}
+entity ConventionProduit {
+}
+entity ConventionNaf {
+}
+entity ConseillerProduit {
+}
+entity ConseillerAgence {
+}
+entity Rubrique {
+	id Integer required,
+	libelle String required maxlength(250),
+	visible Boolean required,
+	numeroOrdre Integer required,
+	tooltip String maxlength(255)
+}
+
+entity Specificitescollege {
+	id Integer required,
+	type String required maxlength(31),
+	nbfemmes Integer,
+	nbtotaleac Integer,
+	nbcvdsanseac Integer,
+	nbmcpsanseac Integer,
+	nbcvdaveceac Integer,
+	nbmcpaveceac Integer
+}
+
+entity Specificitesgarantie {
+	id Integer required,
+	type String required maxlength(31),
+	tauxmcp BigDecimal,
+	tauxcvd BigDecimal,
+	tauxmajorationeac BigDecimal,
+	assimilationcvd Boolean,
+	chargessocialespatronales Integer,
+	chargessocialessalariales Integer,
+	tauxprestation BigDecimal,
+	tauxij BigDecimal,
+	tauxprestationrelais Integer,
+	optionhospi Boolean,
+	franchise Integer,
+	typegarantierenteeducation String maxlength(50),
+	tauxrelineaire BigDecimal,
+	tauxreprogressivepalier1 BigDecimal,
+	agelimreprogressivepalier1 Integer,
+	tauxreprogressivepalier2 BigDecimal,
+	agelimreprogressivepalier2 Integer,
+	tauxreprogressivepalier3 BigDecimal,
+	agelimreprogressivepalier3 Integer,
+	orphelinreselected Boolean,
+	tauxrcviagere BigDecimal,
+	tauxrctemporaire BigDecimal,
+	formulechoisie Boolean,
+	allocationorphelinchoisie Boolean,
+	tauxallocationorphelin BigDecimal,
+	capitalsubstitutifchoisi Boolean,
+	tauxcapitalsubstitutif BigDecimal,
+	agereferencerc Integer,
+	typefranchiseij String maxlength(50),
+	renteinvalidite1erecategorieipt BigDecimal,
+	renteinvalidite2emeet3emecategorieipt BigDecimal,
+	incapacitesupouegalea66ipp BigDecimal,
+	typeincapacite33a66ipp String maxlength(45),
+	minconventionnel BigDecimal,
+	uniteminconventionnel String maxlength(30)
+}
+
+entity Specificitesgarantiepredefinie {
+	id Integer required,
+	tauxprestation BigDecimal,
+	tauxmajorationeac BigDecimal,
+	tauxij BigDecimal,
+	typefranchiseij String maxlength(50),
+	franchise Integer,
+	optionhospi Boolean
+}
+
+entity Typecollege {
+	id Integer required,
+	libelle String maxlength(100),
+	libellechoix String maxlength(255),
+	reference String maxlength(50),
+	categorie String required maxlength(50),
+	tranchecouvertesuperieure String required maxlength(1),
+	numeroordre Integer required
+}
+
+// Relations
+relationship ManyToOne {
+	Agence{mutuelleid} to Mutuelle{agence}
+}
+
+relationship ManyToOne {
+	ChapitreDocumentmeta{chapitre required} to Chapitre{chapitreDocumentmeta}
+}
+
+relationship ManyToOne {
+	ChapitreDocumentmeta{documents required} to Documentmeta{chapitreDocumentmeta}
+}
+
+
+relationship ManyToOne {
+	Collegeunpmf{specificitescollegeid} to Specificitescollege{collegeunpmf}
+}
+
+relationship ManyToOne {
+	Collegeunpmf{typecollegeid required} to Typecollege{collegeunpmf}
+}
+
+relationship ManyToOne {
+	Collegeunpmf{moduleid} to Module{collegeunpmf}
+}
+
+relationship ManyToOne {
+	ConventionNaf{convention required} to Conventioncollective{conventionNaf},
+	ConventionNaf{naf required} to Naf{conventionNaf}
+	
+}
+
+relationship ManyToOne {
+	ConventionProduit{convention required} to Conventioncollective{conventionProduit},
+	ConventionProduit{produit required} to Produit{conventionProduit}
+}
+
+relationship ManyToOne {
+	Entreprise{naf} to Naf{entreprise(codenaf2) required},
+	Entreprise{conventioncollective} to Conventioncollective{entreprise(codeidcc)}
+}
+
+
+relationship ManyToOne {
+	Garantie{rubrique required} to Rubrique{garantie}
+}
+
+relationship ManyToOne {
+	Garantie{produit} to Produit{garantie}
+}
+
+relationship ManyToOne {
+	Garantie{assureur} to Assureur{garantie}
+}
+
+relationship ManyToOne {
+	GarantieTypecollege{garantie required} to Garantie{garantieTypecollege},
+	GarantieTypecollege{typecollege required} to Typecollege{garantieTypecollege}
+}
+
+relationship ManyToOne {
+	LibelleTypeCollege{typecollegeid required} to Typecollege{LibelleTypeCollege}
+}
+
+relationship ManyToOne {
+	LibelleTypeCollege{categorieobjectiveid required} to Categorieobjective{LibelleTypeCollege}
+}
+
+
+relationship ManyToOne {
+	Module{categorieobjectiveid} to Categorieobjective{module}
+}
+
+relationship ManyToOne {
+	NafProduit{naf required} to Naf{nafProduit},
+	NafProduit{produit required} to Produit{nafProduit}
+}
+
+relationship ManyToOne {
+	Prestation{garantie required} to Garantie{prestation}
+}
+
+relationship ManyToOne {
+	Produit{moduledefinition required} to Moduledefinition{produit}
+}
+
+relationship ManyToOne {
+	ProduitFragmentedition{produit required} to Produit{produitFragmentedition},
+	ProduitFragmentedition{fragmentedition required} to Fragmentedition{produitFragmentedition}
+}
+
+relationship ManyToOne {
+	Produitcategorieobjectivelink{categorieobjectiveid required} to Categorieobjective{produitcategorieobjectivelink},
+	Produitcategorieobjectivelink{produit required} to Produit{produitcategorieobjectivelink}
+}
+
+relationship ManyToOne {
+	Produittypecollegelink{produit required} to Produit{produittypecollegelink}
+}
+
+relationship ManyToOne {
+	Produittypecollegelink{typecollegeid required} to Typecollege{produittypecollegelink}
+}
+
+relationship ManyToOne {
+	Specificitesgarantiepredefinie{garantie required} to Garantie{specificitesgarantiepredefinie}
+}
+
+relationship ManyToOne {
+	Specificitesgarantiepredefinie{packgaranties required} to Packgaranties{specificitesgarantiepredefinie}
+}
+
+// Options
+service * with serviceClass
+paginate * with pagination
+dto * with mapstruct
+filter *
+

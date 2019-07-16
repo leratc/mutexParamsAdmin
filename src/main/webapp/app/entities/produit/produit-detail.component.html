@@ -1,0 +1,85 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="produit">
+            <h2><span>Produit</span> {{produit.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Libelle</span></dt>
+                <dd>
+                    <span>{{produit.libelle}}</span>
+                </dd>
+                <dt><span>Reference</span></dt>
+                <dd>
+                    <span>{{produit.reference}}</span>
+                </dd>
+                <dt><span>Numeroordre</span></dt>
+                <dd>
+                    <span>{{produit.numeroordre}}</span>
+                </dd>
+                <dt><span>Typeproduit</span></dt>
+                <dd>
+                    <span>{{produit.typeproduit}}</span>
+                </dd>
+                <dt><span>Familleproduit</span></dt>
+                <dd>
+                    <span>{{produit.familleproduit}}</span>
+                </dd>
+                <dt><span>Produitadditionnel</span></dt>
+                <dd>
+                    <span>{{produit.produitadditionnel}}</span>
+                </dd>
+                <dt><span>Obligatoirepourentreprise</span></dt>
+                <dd>
+                    <span>{{produit.obligatoirepourentreprise}}</span>
+                </dd>
+                <dt><span>Effectifmax</span></dt>
+                <dd>
+                    <span>{{produit.effectifmax}}</span>
+                </dd>
+                <dt><span>Chartegraphique</span></dt>
+                <dd>
+                    <span>{{produit.chartegraphique}}</span>
+                </dd>
+                <dt><span>Alertetarificationexterne</span></dt>
+                <dd>
+                    <span>{{produit.alertetarificationexterne}}</span>
+                </dd>
+                <dt><span>Questionnairerecexige</span></dt>
+                <dd>
+                    <span>{{produit.questionnairerecexige}}</span>
+                </dd>
+                <dt><span>Libellemodule</span></dt>
+                <dd>
+                    <span>{{produit.libellemodule}}</span>
+                </dd>
+                <dt><span>Nomchampbadh</span></dt>
+                <dd>
+                    <span>{{produit.nomchampbadh}}</span>
+                </dd>
+                <dt><span>Typequestionnairerec</span></dt>
+                <dd>
+                    <span>{{produit.typequestionnairerec}}</span>
+                </dd>
+                <dt><span>Moduledefinition</span></dt>
+                <dd>
+                    <div *ngIf="produit.moduledefinitionId">
+                        <a [routerLink]="['/moduledefinition', produit.moduledefinitionId, 'view']">{{produit.moduledefinitionLibelle}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/produit', produit.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,213 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-produit-heading">Create or edit a Produit</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_libelle">Libelle</label>
+                    <input type="text" class="form-control" name="libelle" id="field_libelle"
+                           formControlName="libelle"/>
+                    <div *ngIf="editForm.get('libelle').invalid && (editForm.get('libelle').dirty || editForm.get('libelle').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('libelle').errors.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('libelle').errors.maxlength">
+                        This field cannot be longer than 250 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_reference">Reference</label>
+                    <input type="text" class="form-control" name="reference" id="field_reference"
+                           formControlName="reference"/>
+                    <div *ngIf="editForm.get('reference').invalid && (editForm.get('reference').dirty || editForm.get('reference').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('reference').errors.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('reference').errors.maxlength">
+                        This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_numeroordre">Numeroordre</label>
+                    <input type="number" class="form-control" name="numeroordre" id="field_numeroordre"
+                           formControlName="numeroordre"/>
+                    <div *ngIf="editForm.get('numeroordre').invalid && (editForm.get('numeroordre').dirty || editForm.get('numeroordre').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('numeroordre').errors.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('numeroordre')?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_typeproduit">Typeproduit</label>
+                    <input type="text" class="form-control" name="typeproduit" id="field_typeproduit"
+                           formControlName="typeproduit"/>
+                    <div *ngIf="editForm.get('typeproduit').invalid && (editForm.get('typeproduit').dirty || editForm.get('typeproduit').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('typeproduit').errors.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('typeproduit').errors.maxlength">
+                        This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_familleproduit">Familleproduit</label>
+                    <input type="text" class="form-control" name="familleproduit" id="field_familleproduit"
+                           formControlName="familleproduit"/>
+                    <div *ngIf="editForm.get('familleproduit').invalid && (editForm.get('familleproduit').dirty || editForm.get('familleproduit').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('familleproduit').errors.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('familleproduit').errors.maxlength">
+                        This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_produitadditionnel">Produitadditionnel</label>
+                    <input type="checkbox" class="form-control" name="produitadditionnel" id="field_produitadditionnel"
+                           formControlName="produitadditionnel"/>
+                    <div *ngIf="editForm.get('produitadditionnel').invalid && (editForm.get('produitadditionnel').dirty || editForm.get('produitadditionnel').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('produitadditionnel').errors.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_obligatoirepourentreprise">Obligatoirepourentreprise</label>
+                    <input type="checkbox" class="form-control" name="obligatoirepourentreprise" id="field_obligatoirepourentreprise"
+                           formControlName="obligatoirepourentreprise"/>
+                    <div *ngIf="editForm.get('obligatoirepourentreprise').invalid && (editForm.get('obligatoirepourentreprise').dirty || editForm.get('obligatoirepourentreprise').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('obligatoirepourentreprise').errors.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_effectifmax">Effectifmax</label>
+                    <input type="number" class="form-control" name="effectifmax" id="field_effectifmax"
+                           formControlName="effectifmax"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_chartegraphique">Chartegraphique</label>
+                    <input type="text" class="form-control" name="chartegraphique" id="field_chartegraphique"
+                           formControlName="chartegraphique"/>
+                    <div *ngIf="editForm.get('chartegraphique').invalid && (editForm.get('chartegraphique').dirty || editForm.get('chartegraphique').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('chartegraphique').errors.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('chartegraphique').errors.maxlength">
+                        This field cannot be longer than 15 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_alertetarificationexterne">Alertetarificationexterne</label>
+                    <input type="text" class="form-control" name="alertetarificationexterne" id="field_alertetarificationexterne"
+                           formControlName="alertetarificationexterne"/>
+                    <div *ngIf="editForm.get('alertetarificationexterne').invalid && (editForm.get('alertetarificationexterne').dirty || editForm.get('alertetarificationexterne').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('alertetarificationexterne').errors.maxlength">
+                        This field cannot be longer than 255 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_questionnairerecexige">Questionnairerecexige</label>
+                    <input type="checkbox" class="form-control" name="questionnairerecexige" id="field_questionnairerecexige"
+                           formControlName="questionnairerecexige"/>
+                    <div *ngIf="editForm.get('questionnairerecexige').invalid && (editForm.get('questionnairerecexige').dirty || editForm.get('questionnairerecexige').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('questionnairerecexige').errors.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_libellemodule">Libellemodule</label>
+                    <input type="text" class="form-control" name="libellemodule" id="field_libellemodule"
+                           formControlName="libellemodule"/>
+                    <div *ngIf="editForm.get('libellemodule').invalid && (editForm.get('libellemodule').dirty || editForm.get('libellemodule').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('libellemodule').errors.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('libellemodule').errors.maxlength">
+                        This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nomchampbadh">Nomchampbadh</label>
+                    <input type="text" class="form-control" name="nomchampbadh" id="field_nomchampbadh"
+                           formControlName="nomchampbadh"/>
+                    <div *ngIf="editForm.get('nomchampbadh').invalid && (editForm.get('nomchampbadh').dirty || editForm.get('nomchampbadh').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nomchampbadh').errors.maxlength">
+                        This field cannot be longer than 20 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_typequestionnairerec">Typequestionnairerec</label>
+                    <input type="text" class="form-control" name="typequestionnairerec" id="field_typequestionnairerec"
+                           formControlName="typequestionnairerec"/>
+                    <div *ngIf="editForm.get('typequestionnairerec').invalid && (editForm.get('typequestionnairerec').dirty || editForm.get('typequestionnairerec').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('typequestionnairerec').errors.maxlength">
+                        This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_moduledefinition">Moduledefinition</label>
+                    <select class="form-control" id="field_moduledefinition" name="moduledefinition" formControlName="moduledefinitionId">
+                        <option *ngIf="!editForm.get('moduledefinitionId').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="moduledefinitionOption.id" *ngFor="let moduledefinitionOption of moduledefinitions; trackBy: trackModuledefinitionById">{{moduledefinitionOption.libelle}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('moduledefinitionId').invalid && (editForm.get('moduledefinitionId').dirty || editForm.get('moduledefinitionId').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('moduledefinitionId').errors.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

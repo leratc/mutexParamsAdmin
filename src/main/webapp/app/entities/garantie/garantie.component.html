@@ -1,0 +1,101 @@
+<div>
+    <h2 id="page-heading">
+        <span>Garanties</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-garantie" [routerLink]="['/garantie/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Garantie
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="garanties?.length === 0">
+        <span>No garanties found</span>
+    </div>
+    <div class="table-responsive" *ngIf="garanties?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="libelle"><span>Libelle</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="libelleselection"><span>Libelleselection</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="precisionlibelleselection"><span>Precisionlibelleselection</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="tooltip"><span>Tooltip</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="reference"><span>Reference</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="choisieParDefaut"><span>Choisie Par Defaut</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="modifiable"><span>Modifiable</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="visible"><span>Visible</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="numeroOrdre"><span>Numero Ordre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="filtreIdentifiant"><span>Filtre Identifiant</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="typeSpecificite"><span>Type Specificite</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="libelleRisque"><span>Libelle Risque</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="groupementTarifaire"><span>Groupement Tarifaire</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="produitReference"><span>Produit</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="rubriqueLibelle"><span>Rubrique</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let garantie of garanties ;trackBy: trackId">
+                <td><a [routerLink]="['/garantie', garantie.id, 'view' ]">{{garantie.id}}</a></td>
+                <td>{{garantie.libelle}}</td>
+                <td>{{garantie.libelleselection}}</td>
+                <td>{{garantie.precisionlibelleselection}}</td>
+                <td>{{garantie.tooltip}}</td>
+                <td>{{garantie.reference}}</td>
+                <td>{{garantie.choisieParDefaut}}</td>
+                <td>{{garantie.modifiable}}</td>
+                <td>{{garantie.visible}}</td>
+                <td>{{garantie.numeroOrdre}}</td>
+                <td>{{garantie.filtreIdentifiant}}</td>
+                <td>{{garantie.typeSpecificite}}</td>
+                <td>{{garantie.libelleRisque}}</td>
+                <td>{{garantie.groupementTarifaire}}</td>
+                <td>
+                    <div *ngIf="garantie.produitId">
+                        <a [routerLink]="['../produit', garantie.produitId , 'view' ]" >{{garantie.produitReference}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="garantie.rubriqueId">
+                        <a [routerLink]="['../rubrique', garantie.rubriqueId , 'view' ]" >{{garantie.rubriqueLibelle}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/garantie', garantie.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/garantie', garantie.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'garantie', { outlets: { popup: garantie.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="garanties?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

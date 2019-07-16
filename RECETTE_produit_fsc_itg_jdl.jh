@@ -1,0 +1,79 @@
+entity Moduledefinition {
+	id Integer required,
+	libelle String required maxlength(255),
+	description String maxlength(255),
+	numeroordre Integer required,
+	effectifmax Integer
+}
+
+entity Produit {
+	id Integer required,
+	libelle String required maxlength(250),
+	reference String required maxlength(50),
+	numeroordre Integer required,
+	typeproduit String required maxlength(50),
+	familleproduit String required maxlength(50),
+	produitadditionnel Boolean required,
+	obligatoirepourentreprise Boolean required,
+	effectifmax Integer,
+	chartegraphique String required maxlength(15),
+	alertetarificationexterne String maxlength(255),
+	questionnairerecexige Boolean required,
+	libellemodule String required maxlength(50),
+	nomchampbadh String maxlength(20),
+	typequestionnairerec String maxlength(50)
+}
+
+entity Garantie {
+	id Integer required,
+	libelle TextBlob required,
+	libelleselection TextBlob,
+	precisionlibelleselection TextBlob,
+	tooltip String maxlength(255),
+	reference String required maxlength(50),
+	choisieParDefaut Boolean required,
+	modifiable Boolean required,
+	visible Boolean required,
+	numeroOrdre Integer required,
+	filtreIdentifiant String maxlength(25),
+	typeSpecificite String maxlength(25),
+	libelleRisque String maxlength(250),
+	groupementTarifaire String required maxlength(5)
+}
+
+entity Prestation {
+	id Integer required,
+	libelle String maxlength(255),
+	formuleLibelle String maxlength(255),
+	formule String maxlength(255),
+	formuleApplication String maxlength(255),
+	epingleGarantie Boolean required,
+	numeroOrdre Integer required
+}
+entity Rubrique {
+	id Integer required,
+	libelle String required maxlength(250),
+	visible Boolean required,
+	numeroOrdre Integer required,
+	tooltip String maxlength(255)
+}
+
+relationship ManyToOne {
+    Produit{moduledefinition(libelle) required} to Moduledefinition{produit(moduleDefinitionId)},
+    Garantie{produit(reference) required} to Produit{garantie(produitId)},
+    Garantie{rubrique(libelle) required} to Rubrique{garantie(rubriqueId)},
+    Prestation{garantie(reference) required} to Garantie{prestation(garantieId)}
+}
+
+//relationship OneToMany {
+//   Produit{garantie} to Garantie,
+//   Rubrique{garantie} to Garantie,
+//   Garantie{prestation} to Prestation
+//}
+
+// Options
+service * with serviceClass
+paginate * with pagination
+dto * with mapstruct
+filter *
+

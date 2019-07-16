@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="prestation">
+            <h2><span>Prestation</span> {{prestation.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Libelle</span></dt>
+                <dd>
+                    <span>{{prestation.libelle}}</span>
+                </dd>
+                <dt><span>Formule Libelle</span></dt>
+                <dd>
+                    <span>{{prestation.formuleLibelle}}</span>
+                </dd>
+                <dt><span>Formule</span></dt>
+                <dd>
+                    <span>{{prestation.formule}}</span>
+                </dd>
+                <dt><span>Formule Application</span></dt>
+                <dd>
+                    <span>{{prestation.formuleApplication}}</span>
+                </dd>
+                <dt><span>Epingle Garantie</span></dt>
+                <dd>
+                    <span>{{prestation.epingleGarantie}}</span>
+                </dd>
+                <dt><span>Numero Ordre</span></dt>
+                <dd>
+                    <span>{{prestation.numeroOrdre}}</span>
+                </dd>
+                <dt><span>Garantie</span></dt>
+                <dd>
+                    <div *ngIf="prestation.garantieId">
+                        <a [routerLink]="['/garantie', prestation.garantieId, 'view']">{{prestation.garantieReference}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/prestation', prestation.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="moduledefinition">
+            <h2><span>Moduledefinition</span> {{moduledefinition.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Libelle</span></dt>
+                <dd>
+                    <span>{{moduledefinition.libelle}}</span>
+                </dd>
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{moduledefinition.description}}</span>
+                </dd>
+                <dt><span>Numeroordre</span></dt>
+                <dd>
+                    <span>{{moduledefinition.numeroordre}}</span>
+                </dd>
+                <dt><span>Effectifmax</span></dt>
+                <dd>
+                    <span>{{moduledefinition.effectifmax}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/moduledefinition', moduledefinition.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

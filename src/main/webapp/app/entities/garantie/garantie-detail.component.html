@@ -1,0 +1,87 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="garantie">
+            <h2><span>Garantie</span> {{garantie.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Libelle</span></dt>
+                <dd>
+                    <span>{{garantie.libelle}}</span>
+                </dd>
+                <dt><span>Libelleselection</span></dt>
+                <dd>
+                    <span>{{garantie.libelleselection}}</span>
+                </dd>
+                <dt><span>Precisionlibelleselection</span></dt>
+                <dd>
+                    <span>{{garantie.precisionlibelleselection}}</span>
+                </dd>
+                <dt><span>Tooltip</span></dt>
+                <dd>
+                    <span>{{garantie.tooltip}}</span>
+                </dd>
+                <dt><span>Reference</span></dt>
+                <dd>
+                    <span>{{garantie.reference}}</span>
+                </dd>
+                <dt><span>Choisie Par Defaut</span></dt>
+                <dd>
+                    <span>{{garantie.choisieParDefaut}}</span>
+                </dd>
+                <dt><span>Modifiable</span></dt>
+                <dd>
+                    <span>{{garantie.modifiable}}</span>
+                </dd>
+                <dt><span>Visible</span></dt>
+                <dd>
+                    <span>{{garantie.visible}}</span>
+                </dd>
+                <dt><span>Numero Ordre</span></dt>
+                <dd>
+                    <span>{{garantie.numeroOrdre}}</span>
+                </dd>
+                <dt><span>Filtre Identifiant</span></dt>
+                <dd>
+                    <span>{{garantie.filtreIdentifiant}}</span>
+                </dd>
+                <dt><span>Type Specificite</span></dt>
+                <dd>
+                    <span>{{garantie.typeSpecificite}}</span>
+                </dd>
+                <dt><span>Libelle Risque</span></dt>
+                <dd>
+                    <span>{{garantie.libelleRisque}}</span>
+                </dd>
+                <dt><span>Groupement Tarifaire</span></dt>
+                <dd>
+                    <span>{{garantie.groupementTarifaire}}</span>
+                </dd>
+                <dt><span>Produit</span></dt>
+                <dd>
+                    <div *ngIf="garantie.produitId">
+                        <a [routerLink]="['/produit', garantie.produitId, 'view']">{{garantie.produitReference}}</a>
+                    </div>
+                </dd>
+                <dt><span>Rubrique</span></dt>
+                <dd>
+                    <div *ngIf="garantie.rubriqueId">
+                        <a [routerLink]="['/rubrique', garantie.rubriqueId, 'view']">{{garantie.rubriqueLibelle}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/garantie', garantie.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
