@@ -1,7 +1,12 @@
 package io.github.jhipster.application.service.dto;
+import io.github.jhipster.application.domain.Garantie;
+import io.github.jhipster.application.domain.Produit;
+
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A DTO for the {@link io.github.jhipster.application.domain.Produit} entity.
@@ -57,6 +62,7 @@ public class ProduitDTO implements Serializable {
     @Size(max = 50)
     private String typequestionnairerec;
 
+    private Set<GarantieDTO> garanties = new HashSet<>();
 
     private Long moduledefinitionId;
 
@@ -196,6 +202,13 @@ public class ProduitDTO implements Serializable {
 
     public void setModuledefinitionLibelle(String moduledefinitionLibelle) {
         this.moduledefinitionLibelle = moduledefinitionLibelle;
+    }
+    public Set<GarantieDTO> getGaranties() {
+        return garanties;
+    }
+
+    public void setGaranties(Set<GarantieDTO> garanties) {
+        this.garanties = garanties;
     }
 
     @Override

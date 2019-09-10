@@ -19,7 +19,7 @@ public interface GarantieMapper extends EntityMapper<GarantieDTO, Garantie> {
 
     @Mapping(source = "produitId", target = "produit")
     @Mapping(source = "rubriqueId", target = "rubrique")
-    @Mapping(target = "prestations", ignore = true)
+    @Mapping(target = "prestations")
     @Mapping(target = "removePrestation", ignore = true)
     Garantie toEntity(GarantieDTO garantieDTO);
 

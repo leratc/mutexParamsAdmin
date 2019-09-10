@@ -16,7 +16,7 @@ public interface ProduitMapper extends EntityMapper<ProduitDTO, Produit> {
     ProduitDTO toDto(Produit produit);
 
     @Mapping(source = "moduledefinitionId", target = "moduledefinition")
-    @Mapping(target = "garanties", ignore = true)
+    @Mapping(target = "garanties")
     @Mapping(target = "removeGarantie", ignore = true)
     Produit toEntity(ProduitDTO produitDTO);
 

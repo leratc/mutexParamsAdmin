@@ -1,7 +1,9 @@
 package io.github.jhipster.application.service.dto;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 import javax.persistence.Lob;
 
 /**
@@ -61,6 +63,8 @@ public class GarantieDTO implements Serializable {
     private Long rubriqueId;
 
     private String rubriqueLibelle;
+
+    private Set<PrestationDTO> prestations = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -204,6 +208,14 @@ public class GarantieDTO implements Serializable {
 
     public void setRubriqueLibelle(String rubriqueLibelle) {
         this.rubriqueLibelle = rubriqueLibelle;
+    }
+
+    public Set<PrestationDTO> getPrestations() {
+        return prestations;
+    }
+
+    public void setPrestations(Set<PrestationDTO> prestations) {
+        this.prestations = prestations;
     }
 
     @Override

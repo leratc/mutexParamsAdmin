@@ -67,6 +67,11 @@
                         <a [routerLink]="['/moduledefinition', produit.moduledefinitionId, 'view']">{{produit.moduledefinitionLibelle}}</a>
                     </div>
                 </dd>
+                <dd>
+                    <div *ngFor="let garantie of produit.garanties">
+                        <a [routerLink]="['/garantie', garantie.id, 'view']">{{garantie.reference}} : {{garantie.libelle}} </a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

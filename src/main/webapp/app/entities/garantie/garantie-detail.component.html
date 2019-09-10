@@ -69,6 +69,11 @@
                         <a [routerLink]="['/rubrique', garantie.rubriqueId, 'view']">{{garantie.rubriqueLibelle}}</a>
                     </div>
                 </dd>
+                <dd>
+                    <div *ngFor="let prestation of garantie.prestations">
+                        <a [routerLink]="['/prestation', prestation.id, 'view']">Prestation{{prestation.numeroOrdre}} {{prestation.libelle}} , {{prestation.formuleLibelle}} , {{prestation.formule}}, {{prestation.formuleApplication}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"
